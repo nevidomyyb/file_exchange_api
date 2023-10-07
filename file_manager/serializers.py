@@ -29,18 +29,12 @@ class FileManagerSerializer(serializers.ModelSerializer):
 
     id = serializers.IntegerField(required=False, read_only=True)
     file_path = serializers.FileField()
-    code = CreateCodeField(required=False, read_only=True)
     creation_at = serializers.DateTimeField(required=False, read_only=True)
 
     class Meta:
         model = FileExchange
-        fields = ['id', 'file_path', 'code', 'creation_at']
+        fields = ['id', 'file_path', 'creation_at']
     
     def validate_file_path(self, value):
         validate_file_extensions(value)
         return value
-
-    def validate_code(self, value):
-        if value: raise ValidationError('Please do not send a code value')
-        return value
-        
