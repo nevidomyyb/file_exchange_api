@@ -11,6 +11,7 @@ class FileExchange(models.Model):
     id = models.AutoField(primary_key=True)
     file_path = models.FileField(upload_to='files/%Y/%m/%d/', blank=False, null=False)
     code = models.CharField(max_length=10, null=False, blank=False)
+    downloaded = models.BooleanField(default=0)
     creation_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
