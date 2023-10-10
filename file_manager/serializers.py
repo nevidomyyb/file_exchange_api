@@ -21,7 +21,7 @@ class CreateCodeField(RelatedField):
 
 def validate_file_extensions(value):
     extension = os.path.splitext(value.name)[1].lower()
-    valid_extensions =  ['.pdf', '.xls', '.xlsx', '.rar', '.jpg', '.jpeg', '.png', '.gif']
+    valid_extensions =  ['.pdf', '.xls', '.xlsx', '.rar', '.jpg', '.jpeg', '.png', '.gif', '.txt']
     if not extension in valid_extensions:
         raise ValidationError('Unsupported file extension')
 
